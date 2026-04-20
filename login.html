@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona z logowaniem i rejestracją</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="./logen.jpg" alt="Logo">
+        <nav class="navigation">
+            <a href="index.html">Strona główna</a>
+            <a href="o-nas.html">O nas</a>
+            <a href="uslugi.html">Usługi</a>
+            <a href="kontakt.html">Dane kontaktowe</a>
+            <a href="login.html">Zaloguj się</a>
+        </nav>
+    </header>
+
+    <div class="wrapper active-popup">
+        <div class="form-box login">
+            <h2>Zaloguj się</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Hasło</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Zapamiętaj mnie</label>
+                    <a href="#" id="forgot-link">Zapomniałeś hasło?</a>
+                </div>
+                <button type="submit" class="btn">Zaloguj się</button>
+                <div class="login-register">
+                    <p>Nie masz konta? <a href="#" class="register-link">Zarejestruj się</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <h2>Zarejestruj się</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" required>
+                    <label>Imię</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Hasło</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Zgadzam się z warunkami</label>
+                </div>
+                <button type="submit" class="btn">Zarejestruj się</button>
+                <div class="login-register">
+                    <p>Masz konto? <a href="#" class="login-link">Zaloguj się</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const wrapper = document.querySelector('.wrapper');
+        const loginLink = document.querySelector('.login-link');
+        const registerLink = document.querySelector('.register-link');
+
+        if(registerLink) {
+            registerLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                wrapper.classList.add('active');
+            });
+        }
+        if(loginLink) {
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                wrapper.classList.remove('active');
+            });
+        }
+
+        const forgotLink = document.getElementById('forgot-link');
+        if(forgotLink) {
+            forgotLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Aby zresetować hasło, skontaktuj się z administratorem lub sprawdź swoją skrzynkę e-mail.');
+            });
+        }
+    });
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

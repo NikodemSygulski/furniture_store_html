@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep - Meble na Wymiar</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h2 class="logo">Logo</h2>
+    <nav class="navigation">
+        <a href="index.html">Strona główna</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="uslugi.html">Usługi</a>
+        <a href="kontakt.html">Dane kontaktowe</a>
+        <a href="login.html" class="btnLogin-popup">Zaloguj się</a>
+    </nav>
+</header>
+<main>
+    <section class="hero">
+        <h1>Zamów meble na wymiar</h1>
+        <p>Wybierz rodzaj mebla i podaj wymiary, aby poznać orientacyjną cenę!</p>
+    </section>
+    <section class="hero">
+        <h2>Kalkulator wyceny mebli</h2>
+        <form class="calculator" id="calculator">
+            <label>Rodzaj mebla:
+                <select id="type">
+                    <option value="szafa">Szafa</option>
+                    <option value="biurko">Biurko</option>
+                    <option value="regał">Regał</option>
+                </select>
+            </label><br>
+            <label>Szerokość (cm): <input type="number" id="width" required></label><br>
+            <label>Wysokość (cm): <input type="number" id="height" required></label><br>
+            <label>Głębokość (cm): <input type="number" id="depth" required></label><br>
+            <button type="submit">Oblicz cenę</button>
+        </form>
+        <div class="result" id="result"></div>
+    </section>
+    <section class="hero">
+        <h2>Nasze produkty</h2>
+        <p>
+            <strong>Meble kuchenne:</strong> Nowoczesne i klasyczne kuchnie na wymiar.<br>
+            <strong>Szafy przesuwne:</strong> Idealne do sypialni i przedpokoju.<br>
+            <strong>Biurka i regały:</strong> Funkcjonalne rozwiązania do biura i pokoju dziecięcego.<br>
+            <strong>Stoły i krzesła:</strong> Solidne stoły i wygodne krzesła do jadalni.
+        </p>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2023 Meble na Wymiar. Wszelkie prawa zastrzeżone.</p>
+</footer>
+<script>
+    document.getElementById('calculator').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const type = document.getElementById('type').value;
+        const width = parseFloat(document.getElementById('width').value);
+        const height = parseFloat(document.getElementById('height').value);
+        const depth = parseFloat(document.getElementById('depth').value);
+        let pricePerCm3 = 0.02;
+        if(type === 'biurko') pricePerCm3 = 0.018;
+        if(type === 'regał') pricePerCm3 = 0.015;
+        const price = (width * height * depth * pricePerCm3).toFixed(2);
+        document.getElementById('result').innerText = `Szacowana cena: ${price} zł`;
+    });
+</script>
+</body>
+</html>
